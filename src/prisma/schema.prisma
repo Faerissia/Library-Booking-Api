@@ -1,0 +1,69 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "./generated/prisma-client"
+  previewFeatures = ["filterJson", "fullTextIndex", "fullTextSearch"]
+  binaryTargets   = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model book {
+  id          String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title       String        @unique @db.VarChar
+  author      String        @db.VarChar
+  category_id String?       @db.Uuid
+  isbn        String        @unique @db.VarChar
+  quantity    Int?          @default(0)
+  created_at  DateTime?     @default(now()) @db.Timestamp(6)
+  created_by  String        @db.Uuid
+  updated_at  DateTime?     @default(now()) @db.Timestamp(6)
+  updated_by  String        @db.Uuid
+  category    category?     @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  borrow_book borrow_book[]
+}
+
+model borrow_book {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id     String    @db.Uuid
+  book_id     String    @db.Uuid
+  borrow_date DateTime? @default(now()) @db.Timestamp(6)
+  return_date DateTime  @db.Timestamp(6)
+  created_at  DateTime? @default(now()) @db.Timestamp(6)
+  created_by  String    @db.Uuid
+  updated_at  DateTime? @default(now()) @db.Timestamp(6)
+  updated_by  String    @db.Uuid
+  book        book      @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user        user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model category {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name       String    @unique @db.VarChar
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  created_by String    @db.Uuid
+  updated_at DateTime? @default(now()) @db.Timestamp(6)
+  updated_by String    @db.Uuid
+  book       book[]
+}
+
+model user {
+  id                        String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  username                  String        @unique @db.VarChar
+  password                  String        @db.VarChar
+  role                      role?         @default(user)
+  refresh_token             String?       @db.VarChar
+  refresh_token_expiry_date DateTime?     @db.Timestamp(6)
+  created_at                DateTime?     @default(now()) @db.Timestamp(6)
+  created_by                String?       @db.Uuid
+  updated_at                DateTime?     @default(now()) @db.Timestamp(6)
+  updated_by                String?       @db.Uuid
+  borrow_book               borrow_book[]
+}
+
+enum role {
+  user
+  admin
+}
