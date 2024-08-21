@@ -13,9 +13,9 @@ export const ListCategory = async (req: Request, res: Response) => {
         results: list,
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };
 
@@ -43,9 +43,9 @@ export const CreateCategory = async (req: Request, res: Response) => {
         results: `create Category name ${name} successfully`,
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };
 
@@ -75,8 +75,8 @@ export const UpdateCategory = async (req: Request, res: Response) => {
         results: "update Category successfully",
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };

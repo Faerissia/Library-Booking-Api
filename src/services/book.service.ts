@@ -1,6 +1,8 @@
 import { prismaClient } from "../config/prisma";
 import bcrypt from "bcrypt";
 import { BookListModel, BookModel } from "../model/bookModel";
+import { UserJWT } from "../model/authModel";
+import responseMethod from "./responseMethod";
 
 const methods = {
   async bookList() {
@@ -51,6 +53,9 @@ GROUP BY
         );
         resolve(get[0]);
       } catch (err: any) {
+        if (err.code === "P2010") {
+          return reject(responseMethod.InvalidRequest("book_id invalid"));
+        }
         reject(err);
       }
     });
@@ -83,7 +88,7 @@ GROUP BY
       }
     });
   },
-  async createBook(book_data: any, user: any) {
+  async createBook(book_data: BookModel, user: UserJWT) {
     return new Promise(async (resolve, reject) => {
       try {
         const create = await prismaClient.book.create({
@@ -98,6 +103,29 @@ GROUP BY
           },
         });
         resolve(create);
+      } catch (err: any) {
+        reject(err);
+      }
+    });
+  },
+  async updateBook(book_data: BookModel, user: UserJWT) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const update = await prismaClient.book.update({
+          where: {
+            id: book_data.id,
+          },
+          data: {
+            title: book_data.title,
+            author: book_data.author,
+            category_ids: book_data.category_ids,
+            isbn: book_data.isbn,
+            quantity: book_data.quantity,
+            updated_by: user.user_id,
+            updated_at: new Date(),
+          },
+        });
+        resolve(update);
       } catch (err: any) {
         reject(err);
       }

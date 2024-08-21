@@ -15,9 +15,9 @@ export const getBookList = async (req: Request, res: Response) => {
         results: get_list,
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };
 
@@ -36,9 +36,9 @@ export const viewBook = async (req: Request, res: Response) => {
         results: view,
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };
 
@@ -48,9 +48,10 @@ export const createBook = async (req: Request, res: Response) => {
     return res.status(400).json({ errors: errors.array() });
   }
   const user = (req as any).user;
-  const { title, author, category_ids, quantity, isbn } = req.body;
+  const { title, author, category_ids, quantity, isbn }: BookModel = req.body;
   try {
-    const get_book = await bookService.getBookByName(title);
+    const get_book = (await bookService.getBookByName(title)) as BookModel;
+
     if (get_book)
       return res
         .status(400)
@@ -72,9 +73,9 @@ export const createBook = async (req: Request, res: Response) => {
         results: `create book ${title} successfully`,
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };
 
@@ -84,17 +85,18 @@ export const updateBook = async (req: Request, res: Response) => {
     return res.status(400).json({ errors: errors.array() });
   }
   const user = (req as any).user;
-  const { title, author, category_ids, quantity, isbn } = req.body;
+  const { title, author, category_ids, quantity, isbn }: BookModel = req.body;
   const { book_id } = req.params;
   try {
-    const get_book = await bookService.getBookByName(title);
-    if (get_book)
+    const get_book = (await bookService.getBookByName(title)) as BookModel;
+    if (get_book && book_id != get_book.id)
       return res
         .status(400)
         .json(responseMethod.InvalidRequest("book title is duplicate"));
 
-    await bookService.createBook(
+    await bookService.updateBook(
       {
+        id: book_id,
         title,
         author,
         category_ids,
@@ -109,8 +111,8 @@ export const updateBook = async (req: Request, res: Response) => {
         results: `create book ${title} successfully`,
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.log("Error:", err);
-    res.status(500).json(err);
+    res.status(err?.error?.httpStatusCode || 500).json(err?.error);
   }
 };

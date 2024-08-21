@@ -51,6 +51,23 @@ const methods = {
       }
     });
   },
+  async saveRefreshToken(refresh_token: string, user_id: string) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const update = await prismaClient.user.update({
+          where: {
+            id: user_id,
+          },
+          data: {
+            refresh_token: refresh_token,
+          },
+        });
+        resolve(update);
+      } catch (err: any) {
+        reject(err);
+      }
+    });
+  },
 };
 
 export default { ...methods };

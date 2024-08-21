@@ -48,17 +48,16 @@ model category {
 }
 
 model user {
-  id                        String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  username                  String        @unique @db.VarChar
-  password                  String        @db.VarChar
-  role                      role?         @default(user)
-  refresh_token             String?       @db.VarChar
-  refresh_token_expiry_date DateTime?     @db.Timestamp(6)
-  created_at                DateTime?     @default(now()) @db.Timestamp(6)
-  created_by                String?       @db.Uuid
-  updated_at                DateTime?     @default(now()) @db.Timestamp(6)
-  updated_by                String?       @db.Uuid
-  borrow_book               borrow_book[]
+  id            String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  username      String        @unique @db.VarChar
+  password      String        @db.VarChar
+  role          role?         @default(user)
+  refresh_token String?       @db.VarChar
+  created_at    DateTime?     @default(now()) @db.Timestamp(6)
+  created_by    String?       @db.Uuid
+  updated_at    DateTime?     @default(now()) @db.Timestamp(6)
+  updated_by    String?       @db.Uuid
+  borrow_book   borrow_book[]
 }
 
 enum role {

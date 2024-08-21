@@ -4,9 +4,24 @@ import { AuthRequest } from "../model/authModel";
 
 export const signJWT = async (data: any) => {
   try {
-    const token = jwt.sign(data, process.env.JWT_SECRET as string, {
-      expiresIn: "7d",
+    const token = jwt.sign(data, process.env.JWT_TOKEN_SECRET as string, {
+      expiresIn: "15m",
     });
+    return token;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const reFreshTokenJWT = async (data: any) => {
+  try {
+    const token = jwt.sign(
+      data,
+      process.env.JWT_REFRESH_TOKEN_SECRET as string,
+      {
+        expiresIn: "7d",
+      }
+    );
     return token;
   } catch (error) {
     console.log(error);
@@ -23,7 +38,10 @@ export const authenticate = (
     return res.status(401).json({ message: "Authentication required" });
   }
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_TOKEN_SECRET as string
+    ) as {
       user_id: string;
       username: string;
       role: string;
@@ -42,4 +60,29 @@ export const authorize = (roles: string[]) => {
     }
     next();
   };
+};
+
+export const refreshTokenValidate = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.header("Authorization")?.replace("Bearer ", "");
+  if (!token) {
+    return res.status(401).json({ message: "Authentication required" });
+  }
+  try {
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_REFRESH_TOKEN_SECRET as string
+    ) as {
+      user_id: string;
+      username: string;
+      role: string;
+    };
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Invalid token" });
+  }
 };
