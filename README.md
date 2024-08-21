@@ -1,20 +1,50 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Employee Management Back-End
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Project from assignment
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Prerequisites
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+- Node.js (v20.x or later)
+- MySQL (v8.3 or later)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Getting Started
+
+1. **Setup MySQL Database**
+
+   - Use the provided `.sql` file to create tables and populate data.
+
+2. **Configure Environment**
+
+   - Create an `.env` file with the following:
+
+     ```bash
+     PORT=8081
+     DATABASE_URL="mysql://your_username:your_password@your_url/database_name"
+     ```
+
+   - Adjust `PORT` and `DATABASE_URL` as needed. For other databases, refer to the [Prisma documentation](https://www.prisma.io/docs/orm/overview/databases).
+
+3. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Configure Environment**
+
+   ```bash
+   npm run pull-generate
+   ```
+
+5. **Run the Server**
+   ```bash
+   npm run dev
+   # or
+   npm run start
+   ```
+
+# API Postman
+
+- I've put the `postman_collection` in this too you can check it!
+
+# Enjoy!

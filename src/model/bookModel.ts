@@ -2,7 +2,7 @@ export interface BookModel {
   id: string;
   title: string;
   author: string;
-  category_id: string;
+  category_ids: JSON;
   isbn: string;
   quantity: number;
   created_at: Date;

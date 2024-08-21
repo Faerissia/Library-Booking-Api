@@ -11,18 +11,17 @@ datasource db {
 }
 
 model book {
-  id          String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  title       String        @unique @db.VarChar
-  author      String        @db.VarChar
-  category_id String?       @db.Uuid
-  isbn        String        @unique @db.VarChar
-  quantity    Int?          @default(0)
-  created_at  DateTime?     @default(now()) @db.Timestamp(6)
-  created_by  String        @db.Uuid
-  updated_at  DateTime?     @default(now()) @db.Timestamp(6)
-  updated_by  String        @db.Uuid
-  category    category?     @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  borrow_book borrow_book[]
+  id           String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title        String        @unique @db.VarChar
+  author       String        @db.VarChar
+  category_ids Json?         @db.Json
+  isbn         String        @unique @db.VarChar
+  quantity     Int?          @default(0)
+  created_at   DateTime?     @default(now()) @db.Timestamp(6)
+  created_by   String        @db.Uuid
+  updated_at   DateTime?     @default(now()) @db.Timestamp(6)
+  updated_by   String        @db.Uuid
+  borrow_book  borrow_book[]
 }
 
 model borrow_book {
@@ -46,7 +45,6 @@ model category {
   created_by String    @db.Uuid
   updated_at DateTime? @default(now()) @db.Timestamp(6)
   updated_by String    @db.Uuid
-  book       book[]
 }
 
 model user {

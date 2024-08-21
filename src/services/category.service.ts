@@ -1,5 +1,5 @@
 import { prismaClient } from "../config/prisma";
-import * as authModel from "../model/authModel";
+import { UserJWT } from "../model/authModel";
 
 const methods = {
   async CategoryList() {
@@ -26,7 +26,7 @@ const methods = {
       }
     });
   },
-  async createCategory(name: string, user: authModel.UserJWT) {
+  async createCategory(name: string, user: UserJWT) {
     return new Promise(async (resolve, reject) => {
       try {
         const create = await prismaClient.category.create({
@@ -42,7 +42,7 @@ const methods = {
       }
     });
   },
-  async updateCategory(name: string, id: string, user: authModel.UserJWT) {
+  async updateCategory(name: string, id: string, user: UserJWT) {
     return new Promise(async (resolve, reject) => {
       try {
         const update = await prismaClient.category.update({

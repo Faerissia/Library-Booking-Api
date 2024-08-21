@@ -18,7 +18,15 @@ router.post(
   tools.authenticate,
   tools.authorize(["admin"]),
   bookValidator.createBookValidation,
-  bookController.CreateBook
+  bookController.createBook
+);
+
+router.put(
+  "/(:book_id)",
+  tools.authenticate,
+  tools.authorize(["admin"]),
+  bookValidator.updateBookValidation,
+  bookController.updateBook
 );
 
 export = router;

@@ -42,13 +42,13 @@ export const viewBook = async (req: Request, res: Response) => {
   }
 };
 
-export const CreateBook = async (req: Request, res: Response) => {
+export const createBook = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
   const user = (req as any).user;
-  const { title, author, category_id, quantity, isbn } = req.body;
+  const { title, author, category_ids, quantity, isbn } = req.body;
   try {
     const get_book = await bookService.getBookByName(title);
     if (get_book)
@@ -60,7 +60,44 @@ export const CreateBook = async (req: Request, res: Response) => {
       {
         title,
         author,
-        category_id,
+        category_ids,
+        quantity,
+        isbn,
+      },
+      user
+    );
+    res.json({
+      success: true,
+      data: {
+        results: `create book ${title} successfully`,
+      },
+    });
+  } catch (err) {
+    console.log("Error:", err);
+    res.status(500).json(err);
+  }
+};
+
+export const updateBook = async (req: Request, res: Response) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const user = (req as any).user;
+  const { title, author, category_ids, quantity, isbn } = req.body;
+  const { book_id } = req.params;
+  try {
+    const get_book = await bookService.getBookByName(title);
+    if (get_book)
+      return res
+        .status(400)
+        .json(responseMethod.InvalidRequest("book title is duplicate"));
+
+    await bookService.createBook(
+      {
+        title,
+        author,
+        category_ids,
         quantity,
         isbn,
       },

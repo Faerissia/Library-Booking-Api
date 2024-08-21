@@ -1,26 +1,27 @@
 import { prismaClient } from "../config/prisma";
 import bcrypt from "bcrypt";
+import { BookListModel, BookModel } from "../model/bookModel";
 
 const methods = {
   async bookList() {
     return new Promise(async (resolve, reject) => {
       try {
-        const get_list = await prismaClient.book.findMany({
-          select: {
-            id: true,
-            title: true,
-            author: true,
-            category: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
-            isbn: true,
-            quantity: true,
-            updated_at: true,
-          },
-        });
+        const get_list: BookListModel =
+          await prismaClient.$queryRawUnsafe(`SELECT
+    b.id,
+    b.title,
+    b.author,
+    json_agg(json_build_object('id', c.id, 'name', c.name)) AS categories,
+    b.isbn,
+    b.quantity,
+    b.updated_at
+FROM
+    book b
+CROSS JOIN LATERAL jsonb_array_elements_text(b.category_ids::jsonb) AS category_id
+JOIN
+    category c ON c.id = category_id::uuid
+GROUP BY
+    b.id;`);
         resolve(get_list);
       } catch (err: any) {
         reject(err);
@@ -30,26 +31,25 @@ const methods = {
   async getBookById(book_id: string) {
     return new Promise(async (resolve, reject) => {
       try {
-        const get = await prismaClient.book.findUnique({
-          where: {
-            id: book_id,
-          },
-          select: {
-            id: true,
-            title: true,
-            author: true,
-            category: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
-            isbn: true,
-            quantity: true,
-            updated_at: true,
-          },
-        });
-        resolve(get);
+        const get: BookListModel = await prismaClient.$queryRawUnsafe(
+          `SELECT
+    b.id,
+    b.title,
+    b.author,
+    json_agg(json_build_object('id', c.id, 'name', c.name)) AS categories,
+    b.isbn,
+    b.quantity,
+    b.updated_at
+FROM
+    book b
+CROSS JOIN LATERAL jsonb_array_elements_text(b.category_ids::jsonb) AS category_id
+JOIN
+    category c ON c.id = category_id::uuid WHERE b.id = $1
+GROUP BY
+    b.id;`,
+          book_id
+        );
+        resolve(get[0]);
       } catch (err: any) {
         reject(err);
       }
@@ -58,26 +58,26 @@ const methods = {
   async getBookByName(book_title: string) {
     return new Promise(async (resolve, reject) => {
       try {
-        const get = await prismaClient.book.findUnique({
-          where: {
-            title: book_title,
-          },
-          select: {
-            id: true,
-            title: true,
-            author: true,
-            category: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
-            isbn: true,
-            quantity: true,
-            updated_at: true,
-          },
-        });
-        resolve(get);
+        console.log(book_title);
+        const get: BookListModel = await prismaClient.$queryRawUnsafe(
+          `SELECT
+          b.id,
+          b.title,
+          b.author,
+          json_agg(json_build_object('id', c.id, 'name', c.name)) AS categories,
+          b.isbn,
+          b.quantity,
+          b.updated_at
+      FROM
+          book b
+      CROSS JOIN LATERAL jsonb_array_elements_text(b.category_ids::jsonb) AS category_id
+      JOIN
+          category c ON c.id = category_id::uuid WHERE b.title = $1
+      GROUP BY
+          b.id;`,
+          book_title
+        );
+        resolve(get[0]);
       } catch (err: any) {
         reject(err);
       }
@@ -90,7 +90,7 @@ const methods = {
           data: {
             title: book_data.title,
             author: book_data.author,
-            category_id: book_data.category_id,
+            category_ids: book_data.category_ids,
             isbn: book_data.isbn,
             quantity: book_data.quantity,
             created_by: user.user_id,
