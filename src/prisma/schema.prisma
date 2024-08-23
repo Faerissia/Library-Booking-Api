@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   output          = "./generated/prisma-client"
-  previewFeatures = ["filterJson", "fullTextIndex", "fullTextSearch"]
+  previewFeatures = ["fullTextIndex", "fullTextSearch", "relationJoins"]
   binaryTargets   = ["native", "rhel-openssl-1.0.x"]
 }
 
@@ -21,6 +21,7 @@ model book {
   created_by   String        @db.Uuid
   updated_at   DateTime?     @default(now()) @db.Timestamp(6)
   updated_by   String        @db.Uuid
+  book_cover   String?       @db.VarChar(255)
   borrow_book  borrow_book[]
 }
 
@@ -29,7 +30,8 @@ model borrow_book {
   user_id     String    @db.Uuid
   book_id     String    @db.Uuid
   borrow_date DateTime? @default(now()) @db.Timestamp(6)
-  return_date DateTime  @db.Timestamp(6)
+  due_date    DateTime  @db.Timestamp(6)
+  return_date DateTime? @db.Timestamp(6)
   created_at  DateTime? @default(now()) @db.Timestamp(6)
   created_by  String    @db.Uuid
   updated_at  DateTime? @default(now()) @db.Timestamp(6)
@@ -51,10 +53,9 @@ model user {
   id            String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   username      String        @unique @db.VarChar
   password      String        @db.VarChar
-  role          role?         @default(user)
+  role          role          @default(user)
   refresh_token String?       @db.VarChar
   created_at    DateTime?     @default(now()) @db.Timestamp(6)
-  created_by    String?       @db.Uuid
   updated_at    DateTime?     @default(now()) @db.Timestamp(6)
   updated_by    String?       @db.Uuid
   borrow_book   borrow_book[]

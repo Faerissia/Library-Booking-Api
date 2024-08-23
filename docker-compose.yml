@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: Library-Circulation-API
+    ports:
+      - "8081:8081"
+    container_name: Library-Circulation-API
+    environment:
+      PORT: 8081
+      DATABASE_URL: "postgresql://root:032341381@192.168.1.111/LibraryBooking"
+      JWT_TOKEN_SECRET: "LIBRARY!BOOING!API#"
+      JWT_REFRESH_TOKEN_SECRET: "REFRESHTOKEN!LIBRARY!BOOKIG!API#"
+      ACCESS_EXPIRY: "7d"
+      REFRESH_EXPIRY: "7d"

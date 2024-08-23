@@ -21,4 +21,12 @@ router.put(
   categoryController.UpdateCategory
 );
 
+router.delete(
+  "/(:category_id)",
+  tools.authenticate,
+  tools.authorize(["admin"]),
+  categoryValidator.deleteCategoryValidation,
+  categoryController.deleteCategory
+);
+
 export = router;

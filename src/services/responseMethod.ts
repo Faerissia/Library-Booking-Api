@@ -106,7 +106,7 @@ const methods = {
       error: {
         httpStatusCode: 404,
         code: "l404",
-        message: `${msg} Not found`,
+        message: `${msg}`,
       },
     };
   },

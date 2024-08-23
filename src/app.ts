@@ -8,7 +8,6 @@ import router from "./router";
 const app: Application = express();
 
 app.use(cors());
-
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());

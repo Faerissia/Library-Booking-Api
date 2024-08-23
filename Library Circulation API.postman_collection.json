@@ -1,0 +1,2225 @@
+{
+	"info": {
+		"_postman_id": "e8b007b2-a4df-4232-afc6-1e189c6cd8de",
+		"name": "Library Circulation API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26200340",
+		"_collection_link": "https://nftp-employee-management.postman.co/workspace/My-Workspace~dd249c07-d58b-443f-8491-12859f0ed010/collection/26200340-e8b007b2-a4df-4232-afc6-1e189c6cd8de?action=share&source=collection_link&creator=26200340"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "getUserList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/?page_size=10&page=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								""
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "NO",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "1",
+									"description": "1 user / 2 admin",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getUserList - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/auth/?page_size=10&page=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										""
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "NO",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "1",
+											"description": "1 user / 2 admin",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"493-kTULt19XQZ3pHzdj53vpHXo0+nY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 05:03:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total_pages\": 1,\n        \"page_size\": 10,\n        \"total_count\": 2\n    },\n    \"result\": [\n        {\n            \"id\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n            \"username\": \"admin\",\n            \"password\": \"$2b$10$XQe5gWBCZrcMD4w2ixxg4.KtRVmISC4fcO/shsqA6WuRY4ofiv/Qa\",\n            \"role\": \"admin\",\n            \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2MxMzhjMGQtNTc1OS00YTczLWE5YzUtMDQ1Nzc0NzVlYjU3IiwidG9rZW5faWQiOiIwMWRiMzRhYy04NzljLTQ1ZTQtODYzOC05OGFmZDg1YzMzMzMiLCJpYXQiOjE3MjQzODQ3NDUsImV4cCI6MTcyNDk4OTU0NX0.-FxcjeiSjkvF6BuA-oCta6lGigY7FPNSxIn_vY5q94w\",\n            \"created_at\": \"2024-08-21T16:01:19.904Z\",\n            \"updated_at\": \"2024-08-23T10:43:17.853Z\",\n            \"updated_by\": null\n        },\n        {\n            \"id\": \"477d098c-b92b-47f5-be8f-d2357d7ceddc\",\n            \"username\": \"nontaphat\",\n            \"password\": \"$2b$10$SH714BbHzIvTXRtv.8Ce.uW2IVCFrTN/eRWVMbocdq4tXYV3BeZqG\",\n            \"role\": \"user\",\n            \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDc3ZDA5OGMtYjkyYi00N2Y1LWJlOGYtZDIzNTdkN2NlZGRjIiwidG9rZW5faWQiOiI1YjUyYTY5MS1lODJjLTQwNzAtOTEwMC0zY2Y0MTc5NjNhOWUiLCJpYXQiOjE3MjQzODQ3MTQsImV4cCI6MTcyNDk4OTUxNH0.g350XtN0KJmPwp3BOqols91E5LPmCd92a3WLQmADKxs\",\n            \"created_at\": \"2024-08-23T10:43:17.853Z\",\n            \"updated_at\": \"2024-08-23T10:43:17.853Z\",\n            \"updated_by\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"nontaphat\",\r\n    \"password\":\"12345678\",\r\n    \"confirm_password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"nontaphat\",\r\n    \"password\":\"12345678\",\r\n    \"confirm_password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-0Fh+gq/FINZdLlae5JmTi122nns\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Aug 2024 19:10:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"results\": \"register successfully\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "540"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21c-hvIahmgrZtlfQPlI9re51CzDsBk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Aug 2024 19:05:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2MxMzhjMGQtNTc1OS00YTczLWE5YzUtMDQ1Nzc0NzVlYjU3IiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNDI2NzE0OSwiZXhwIjoxNzI0MjY4MDQ5fQ.p7z5p05dyzZBJboouUlIynvSZHk7gIXGAg2bxJMgcnw\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2MxMzhjMGQtNTc1OS00YTczLWE5YzUtMDQ1Nzc0NzVlYjU3IiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNDI2NzE0OSwiZXhwIjoxNzI0ODcxOTQ5fQ.TjCRHifd-amCnAkxLkB2l04dmW6iqUACz7cGIN0Y_LQ\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/logout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"nontaphat\", //optional\r\n    \"password\": \"12345678\", //optional\r\n    \"confirm_password\": \"12345678\", //optional\r\n    \"role\": 1 //optional 1 user / 2 admin\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "editUser - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"nontaphat\", //optional\r\n    \"password\": \"12345678\", //optional\r\n    \"confirm_password\": \"12345678\", //optional\r\n    \"role\": 1 //optional 1 user / 2 admin\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d-AebxIIfo/AFymv5xwArDyOSD9Y0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 03:30:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"edit user nontaphat successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/c0ad84fb-fe87-4b7b-8626-b418fb3b6910",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"c0ad84fb-fe87-4b7b-8626-b418fb3b6910"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteUser - success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/auth/c0ad84fb-fe87-4b7b-8626-b418fb3b6910",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"c0ad84fb-fe87-4b7b-8626-b418fb3b6910"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-jUI/BIXMVgxXG9kzzQRlnWd75s4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 03:43:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"delete user nontaphat successfully\",\n    \"result\": {\n        \"message\": \"delete borrow_book 1 items\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "refreshToken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{RefreshToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/refresh",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "viewBook",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/book/view/8d3889e4-3b82-48e8-9d34-ada07eca6479",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"book",
+								"view",
+								"8d3889e4-3b82-48e8-9d34-ada07eca6479"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "viewBook - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/book/view/8d3889e4-3b82-48e8-9d34-ada07eca6479",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"book",
+										"view",
+										"8d3889e4-3b82-48e8-9d34-ada07eca6479"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "496"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f0-LWC2X9Hzt5DxWGdGFtUl5g5mKlI\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 07:14:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": {\n        \"id\": \"8d3889e4-3b82-48e8-9d34-ada07eca6479\",\n        \"title\": \"harry potter and the philosopher's stone\",\n        \"author\": \"J.K. rolling\",\n        \"categories\": [\n            {\n                \"id\": \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                \"name\": \"Fantasy\"\n            },\n            {\n                \"id\": \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                \"name\": \"Novel\"\n            },\n            {\n                \"id\": \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                \"name\": \"Fiction\"\n            },\n            {\n                \"id\": \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\",\n                \"name\": \"Mystery\"\n            }\n        ],\n        \"isbn\": \"1jgfibqo23123svqw\",\n        \"quantity\": 1,\n        \"updated_at\": \"2024-08-21T16:09:05.009+00:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "searchBook",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/book/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"book",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "h",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "J",
+									"disabled": true
+								},
+								{
+									"key": "category_id",
+									"value": "3a713799-f3f5-44a6-bf22-6327b96fc77e,985b88c2-8299-4733-9755-d4425d2d31c3",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"description": "default 1",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": null,
+									"description": "default 10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "searchBook - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/book/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"book",
+										""
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "h",
+											"disabled": true
+										},
+										{
+											"key": "author",
+											"value": "J",
+											"disabled": true
+										},
+										{
+											"key": "category_id",
+											"value": "3a713799-f3f5-44a6-bf22-6327b96fc77e,985b88c2-8299-4733-9755-d4425d2d31c3",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": null,
+											"description": "default 1",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": null,
+											"description": "default 10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d6-l2h+y5A8JDytJync5bfy5ITWSMY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 04:25:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"pagination\": {\n        \"current_page\": 1,\n        \"total_page\": 1,\n        \"page_size\": 10,\n        \"total_count\": 4\n    },\n    \"result\": [\n        {\n            \"id\": \"9dfba498-cc67-4f01-9c4a-3b817ea1533b\",\n            \"title\": \"The Chronicles  of Narnia: The Lion, the Witch and the Wardrobe\",\n            \"author\": \"C. S. Lewis\",\n            \"categories\": [\n                {\n                    \"id\": \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"name\": \"Fantasy\"\n                },\n                {\n                    \"id\": \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"name\": \"Novel\"\n                },\n                {\n                    \"id\": \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"name\": \"Fiction\"\n                },\n                {\n                    \"id\": \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\",\n                    \"name\": \"Mystery\"\n                }\n            ],\n            \"isbn\": \"31jo23121223svqw\",\n            \"quantity\": 7,\n            \"updated_at\": \"2024-08-23T10:53:55.527Z\"\n        },\n        {\n            \"id\": \"61dffe2f-ec06-40f8-9512-f792808d64d7\",\n            \"title\": \"harry potter and the philosopher's stone\",\n            \"author\": \"J.K. rolling\",\n            \"categories\": [\n                {\n                    \"id\": \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"name\": \"Fantasy\"\n                },\n                {\n                    \"id\": \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"name\": \"Novel\"\n                },\n                {\n                    \"id\": \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"name\": \"Fiction\"\n                },\n                {\n                    \"id\": \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\",\n                    \"name\": \"Mystery\"\n                }\n            ],\n            \"isbn\": \"1jgfibqo23123svqw\",\n            \"quantity\": 0,\n            \"updated_at\": \"2024-08-23T04:00:20.336Z\"\n        },\n        {\n            \"id\": \"5bc6ef78-8fcd-4e00-b37d-e9d807904ba5\",\n            \"title\": \"lord of the ring the fellowship of the ring\",\n            \"author\": \"J.R.R Tolkien\",\n            \"categories\": [\n                {\n                    \"id\": \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"name\": \"Fantasy\"\n                },\n                {\n                    \"id\": \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"name\": \"Novel\"\n                },\n                {\n                    \"id\": \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"name\": \"Fiction\"\n                },\n                {\n                    \"id\": \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\",\n                    \"name\": \"Mystery\"\n                }\n            ],\n            \"isbn\": \"1jgfibqo23121223svqw\",\n            \"quantity\": 5,\n            \"updated_at\": \"2024-08-23T01:09:33.621Z\"\n        },\n        {\n            \"id\": \"cf87992c-5144-47bc-988a-685adc86b72a\",\n            \"title\": \"A Game of Thrones A Song of Ice and Fire\",\n            \"author\": \"George R. R. Martin\",\n            \"categories\": [\n                {\n                    \"id\": \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"name\": \"Fantasy\"\n                },\n                {\n                    \"id\": \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"name\": \"Novel\"\n                },\n                {\n                    \"id\": \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"name\": \"Fiction\"\n                },\n                {\n                    \"id\": \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\",\n                    \"name\": \"Mystery\"\n                }\n            ],\n            \"isbn\": \"31jo23166621223svqw\",\n            \"quantity\": 0,\n            \"updated_at\": \"2024-08-23T10:53:55.527Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "createBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"harry potter and the philosopher's stone\",\r\n    \"author\": \"J.K. rolling\",\r\n    \"category_ids\": [\r\n  \"985b88c2-8299-4733-9755-d4425d2d31c3\",\r\n  \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\r\n  \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\r\n  \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\r\n],\r\n    \"quantity\": 1,\r\n    \"isbn\": \"1jgfibqo23123svqw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/book/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"book",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "createBook - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"A Game of Thrones A Song of Ice and Fire\",\r\n    \"author\": \"George R. R. Martin\",\r\n    \"category_ids\": [\r\n  \"985b88c2-8299-4733-9755-d4425d2d31c3\",\r\n  \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\r\n  \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\r\n  \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\r\n],\r\n    \"quantity\": 1,\r\n    \"isbn\": \"31jo23166621223svqw\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/book/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"book",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-ezpQfRE7A4HJj0l2mvJP92hJ4mc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 07:16:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"create book A Game of Thrones A Song of Ice and Fire successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "updateBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"lord of the ring the fellowship of the ring\",\r\n    \"author\": \"J.R.R Tolkien\",\r\n    \"category_ids\": [\r\n  \"985b88c2-8299-4733-9755-d4425d2d31c3\",\r\n  \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\r\n  \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\r\n  \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\r\n],\r\n    \"quantity\": 5,\r\n    \"isbn\": \"1jgfibqo23121223svqw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/book/5bc6ef78-8fcd-4e00-b37d-e9d807904ba5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"book",
+								"5bc6ef78-8fcd-4e00-b37d-e9d807904ba5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updateBook - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"lord of the ring the fellowship of the ring\",\r\n    \"author\": \"J.R.R Tolkien\",\r\n    \"category_ids\": [\r\n  \"985b88c2-8299-4733-9755-d4425d2d31c3\",\r\n  \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\r\n  \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\r\n  \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\r\n],\r\n    \"quantity\": 5,\r\n    \"isbn\": \"1jgfibqo23121223svqw\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/book/5bc6ef78-8fcd-4e00-b37d-e9d807904ba5",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"book",
+										"5bc6ef78-8fcd-4e00-b37d-e9d807904ba5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "97"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"61-PIXn/nn8Pa1Yew/pp2uU2RlZaqg\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 07:17:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"update book lord of the ring the fellowship of the ring successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/book/fa0c3b58-4d16-4a83-a377-11e78c389808",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"book",
+								"fa0c3b58-4d16-4a83-a377-11e78c389808"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteBook - success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/book/fa0c3b58-4d16-4a83-a377-11e78c389808",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"book",
+										"fa0c3b58-4d16-4a83-a377-11e78c389808"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-Xxo9YCYrUVqJ05w4PeK2tK4GUio\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 20:58:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"delete book harry potter and the philosopher's stone successfully\",\n    \"result\": {\n        \"message\": \"delete borrow_book 0 items\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/category",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "408"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"198-eI07A2xJdSeU0bQvzfwwT3JKcJA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 07:11:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": [\n        {\n            \"id\": \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n            \"name\": \"Fantasy\"\n        },\n        {\n            \"id\": \"e30df21d-00b5-4ebd-9ab4-67c51d1f1538\",\n            \"name\": \"Horror\"\n        },\n        {\n            \"id\": \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n            \"name\": \"Novel\"\n        },\n        {\n            \"id\": \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n            \"name\": \"Fiction\"\n        },\n        {\n            \"id\": \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\",\n            \"name\": \"Mystery\"\n        },\n        {\n            \"id\": \"8e1efe30-5634-4612-abeb-0504649450a5\",\n            \"name\": \"Entertainment\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"NANI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "createCategory - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Sci-fi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/category",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-N0vkQD3b9Izp1c1FmSEV1ZLNPWo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 07:12:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"create Category name Sci-fi successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Drama\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/category/7c0f5797-75a5-42ac-8a99-a368275017a4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category",
+								"7c0f5797-75a5-42ac-8a99-a368275017a4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updateCategory - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Drama\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/category/7c0f5797-75a5-42ac-8a99-a368275017a4",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category",
+										"7c0f5797-75a5-42ac-8a99-a368275017a4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-haOabXWzjWNNzcRYF3TA4ktXKJk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 20:07:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"update Category ffff to Drama successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/category/010256cb-72e9-4415-9fbe-52c08b4c0d42",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"category",
+								"010256cb-72e9-4415-9fbe-52c08b4c0d42"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteCategory - success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/category/010256cb-72e9-4415-9fbe-52c08b4c0d42",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category",
+										"010256cb-72e9-4415-9fbe-52c08b4c0d42"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"74-cPbQ/lCweB8uIo2rnPW2MbPcRP8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 20:30:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"remove category Sci-fi successfully\",\n    \"result\": {\n        \"message\": \"successfully\",\n        \"book_update\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Circulation",
+			"item": [
+				{
+					"name": "getMostBorrowBook",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/circulation/most-borrow",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"circulation",
+								"most-borrow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getMostBorrowBook - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/most-borrow",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										"most-borrow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "652"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28c-IK6PL85WA4pSnKVZ2zq/XE9go+c\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 18:17:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": [\n        {\n            \"id\": \"8d3889e4-3b82-48e8-9d34-ada07eca6479\",\n            \"title\": \"harry potter and the philosopher's stone\",\n            \"author\": \"J.K. rolling\",\n            \"_count\": {\n                \"borrow_book\": 2\n            }\n        },\n        {\n            \"id\": \"9dfba498-cc67-4f01-9c4a-3b817ea1533b\",\n            \"title\": \"The Chronicles  of Narnia: The Lion, the Witch and the Wardrobe\",\n            \"author\": \"C. S. Lewis\",\n            \"_count\": {\n                \"borrow_book\": 0\n            }\n        },\n        {\n            \"id\": \"cf87992c-5144-47bc-988a-685adc86b72a\",\n            \"title\": \"A Game of Thrones A Song of Ice and Fire\",\n            \"author\": \"George R. R. Martin\",\n            \"_count\": {\n                \"borrow_book\": 0\n            }\n        },\n        {\n            \"id\": \"5bc6ef78-8fcd-4e00-b37d-e9d807904ba5\",\n            \"title\": \"lord of the ring the fellowship of the ring\",\n            \"author\": \"J.R.R Tolkien\",\n            \"_count\": {\n                \"borrow_book\": 0\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "getBorrowList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/circulation/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"circulation",
+								""
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "2",
+									"description": "1 overdue, 2 borrow",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"description": "default 1",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": null,
+									"description": "default 10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "admin - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										""
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "2",
+											"description": "1 overdue, 2 borrow",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bf5-yak2ozM9DmJpLaKhrKne0p1lUV0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 19:48:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": [\n        {\n            \"id\": \"30c3d1c3-84c3-48db-b94d-10f363793bf2\",\n            \"book\": {\n                \"id\": \"8d3889e4-3b82-48e8-9d34-ada07eca6479\",\n                \"title\": \"harry potter and the philosopher's stone\",\n                \"author\": \"J.K. rolling\",\n                \"category_ids\": [\n                    \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\n                ],\n                \"isbn\": \"1jgfibqo23123svqw\",\n                \"quantity\": 16,\n                \"created_at\": \"2024-08-21T16:09:05.009Z\",\n                \"created_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"updated_at\": \"2024-08-23T01:06:30.829Z\",\n                \"updated_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"book_cover\": null\n            },\n            \"borrow_date\": \"2024-08-23T00:35:39.878Z\",\n            \"due_date\": \"2024-08-30T00:35:56.544Z\",\n            \"return_date\": \"2024-08-23T00:51:07.441Z\",\n            \"user\": {\n                \"id\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"username\": \"admin\",\n                \"password\": \"$2b$10$XQe5gWBCZrcMD4w2ixxg4.KtRVmISC4fcO/shsqA6WuRY4ofiv/Qa\",\n                \"role\": \"admin\",\n                \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2MxMzhjMGQtNTc1OS00YTczLWE5YzUtMDQ1Nzc0NzVlYjU3IiwidG9rZW5faWQiOiJiNGU1OTJmNy0wZmQyLTRlNDktYWIxYS04YTg5N2VkYzA3NDkiLCJpYXQiOjE3MjQzNTE5ODAsImV4cCI6MTcyNDk1Njc4MH0.GTeBK5gmGrCu0XU98eJ5-iG3mebECFhwopDV9KEPNuc\",\n                \"created_at\": \"2024-08-21T16:01:19.904Z\",\n                \"updated_at\": \"2024-08-23T01:39:39.150Z\",\n                \"updated_by\": null\n            },\n            \"created_at\": \"2024-08-23T00:35:39.878Z\",\n            \"created_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n            \"updated_at\": \"2024-08-23T00:51:07.441Z\",\n            \"updated_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n            \"item_status\": {\n                \"isLate\": false,\n                \"status\": \"Returned On Time\",\n                \"dayLeft\": \"6 day(s) left until due date\"\n            }\n        },\n        {\n            \"id\": \"17d48144-d338-4e12-9310-12fc944c71eb\",\n            \"book\": {\n                \"id\": \"8d3889e4-3b82-48e8-9d34-ada07eca6479\",\n                \"title\": \"harry potter and the philosopher's stone\",\n                \"author\": \"J.K. rolling\",\n                \"category_ids\": [\n                    \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\n                ],\n                \"isbn\": \"1jgfibqo23123svqw\",\n                \"quantity\": 16,\n                \"created_at\": \"2024-08-21T16:09:05.009Z\",\n                \"created_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"updated_at\": \"2024-08-23T01:06:30.829Z\",\n                \"updated_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"book_cover\": null\n            },\n            \"borrow_date\": \"2024-08-23T00:51:40.322Z\",\n            \"due_date\": \"2024-08-30T00:51:47.483Z\",\n            \"return_date\": null,\n            \"user\": {\n                \"id\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"username\": \"admin\",\n                \"password\": \"$2b$10$XQe5gWBCZrcMD4w2ixxg4.KtRVmISC4fcO/shsqA6WuRY4ofiv/Qa\",\n                \"role\": \"admin\",\n                \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2MxMzhjMGQtNTc1OS00YTczLWE5YzUtMDQ1Nzc0NzVlYjU3IiwidG9rZW5faWQiOiJiNGU1OTJmNy0wZmQyLTRlNDktYWIxYS04YTg5N2VkYzA3NDkiLCJpYXQiOjE3MjQzNTE5ODAsImV4cCI6MTcyNDk1Njc4MH0.GTeBK5gmGrCu0XU98eJ5-iG3mebECFhwopDV9KEPNuc\",\n                \"created_at\": \"2024-08-21T16:01:19.904Z\",\n                \"updated_at\": \"2024-08-23T01:39:39.150Z\",\n                \"updated_by\": null\n            },\n            \"created_at\": \"2024-08-23T00:51:40.322Z\",\n            \"created_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n            \"updated_at\": \"2024-08-23T01:06:30.928Z\",\n            \"updated_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n            \"item_status\": {\n                \"isLate\": false,\n                \"status\": \"Borrowed\",\n                \"dayLeft\": \"6 day(s) left until due date\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "user - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/?status=2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										""
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "2",
+											"description": "1 overdue, 2 borrow"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5fc-KVEfO3ODb2xH55rB1JstvcP1xxA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 19:54:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": [\n        {\n            \"id\": \"1fdc36bb-d959-431d-9385-174e2da04d9f\",\n            \"book\": {\n                \"id\": \"8d3889e4-3b82-48e8-9d34-ada07eca6479\",\n                \"title\": \"harry potter and the philosopher's stone\",\n                \"author\": \"J.K. rolling\",\n                \"category_ids\": [\n                    \"985b88c2-8299-4733-9755-d4425d2d31c3\",\n                    \"3a713799-f3f5-44a6-bf22-6327b96fc77e\",\n                    \"3ca8cad9-5b8d-44b3-b760-f9e357477555\",\n                    \"40eb5f02-bb35-49ae-af25-c8ab871ddf60\"\n                ],\n                \"isbn\": \"1jgfibqo23123svqw\",\n                \"quantity\": 16,\n                \"created_at\": \"2024-08-21T16:09:05.009Z\",\n                \"created_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"updated_at\": \"2024-08-23T01:51:00.306Z\",\n                \"updated_by\": \"3c138c0d-5759-4a73-a9c5-04577475eb57\",\n                \"book_cover\": null\n            },\n            \"borrow_date\": \"2024-08-23T01:51:00.434Z\",\n            \"due_date\": \"2024-08-30T02:52:13.783Z\",\n            \"return_date\": null,\n            \"user\": {\n                \"id\": \"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78\",\n                \"username\": \"nontaphat\",\n                \"password\": \"$2b$10$zPQZ6cm6/2KIxsOJA4iFcuhzGiQlF.Ds6WpAFS/8CwTIA4aC1acQC\",\n                \"role\": \"user\",\n                \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTYxZjVkMWQtN2NhNC00ZDhkLWE2N2UtMjhmMWY3YTc3Yjc4IiwidG9rZW5faWQiOiJjYWQ2ZDBkOC1mOTNmLTQ2MTctODljNy0wMmNlMThmMTBkOWMiLCJpYXQiOjE3MjQzNTYzMTUsImV4cCI6MTcyNDk2MTExNX0.mHXYe0h-pxPgt0t7iXP7wJnZGB8Mg6SkBnW3eDwGKec\",\n                \"created_at\": \"2024-08-21T19:10:24.275Z\",\n                \"updated_at\": \"2024-08-23T01:51:00.173Z\",\n                \"updated_by\": null\n            },\n            \"created_at\": \"2024-08-23T01:51:00.434Z\",\n            \"created_by\": \"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78\",\n            \"updated_at\": \"2024-08-23T01:51:00.434Z\",\n            \"updated_by\": \"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78\",\n            \"item_status\": {\n                \"isLate\": false,\n                \"status\": \"Borrowed\",\n                \"dayLeft\": \"6 day(s) left until due date\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "borrowBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book_id\":\"cf87992c-5144-47bc-988a-685adc86b72a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/circulation/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"circulation",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "borrowBook - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"book_id\":\"8d3889e4-3b82-48e8-9d34-ada07eca6479\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-7MfmHbpPjL79rfwaarTy7oiuVzs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 19:49:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"successfully borrow book\",\n    \"result\": {\n        \"borrow_date\": \"2024-08-23T01:51:00.434Z\",\n        \"due_date\": \"2024-08-30T02:49:28.695Z\",\n        \"book\": {\n            \"title\": \"harry potter and the philosopher's stone\",\n            \"author\": \"J.K. rolling\",\n            \"isbn\": \"1jgfibqo23123svqw\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "returnBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/circulation/e09e0159-b7ef-4452-9e24-3de03bb7c26e",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"circulation",
+								"e09e0159-b7ef-4452-9e24-3de03bb7c26e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "returnBook - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/a5e08c37-4f8d-4c7b-b5df-4921925153fe",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										"a5e08c37-4f8d-4c7b-b5df-4921925153fe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"126-ceaOIOYDNI/Ckasnt+hCIpk4QuU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2024 19:49:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"return book harry potter and the philosopher's stone successfully\",\n    \"result\": {\n        \"borrow_date\": \"2024-08-23T01:51:00.434Z\",\n        \"due_date\": \"2024-08-30T02:49:28.695Z\",\n        \"return_date\": \"2024-08-23T01:51:00.434Z\",\n        \"status\": \"Returned On Time\",\n        \"dayLeft\": \"7 day(s) left until due date\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "editBorrow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book_id\": \"5bc6ef78-8fcd-4e00-b37d-e9d807904ba5\", //optional\r\n    \"user_id\": \"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78\", //optional\r\n    \"borrow_date\": \"2024-08-23T09:30:59.525Z\", // optional\r\n    \"due_date\": \"2024-08-23T09:59:59.525Z\", //optional\r\n    \"return_date\": \"2024-08-23T09:36:59.525Z\" //optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/circulation/edit/818e6d96-5838-46d2-9baf-e4bb45f01d3b",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"circulation",
+								"edit",
+								"818e6d96-5838-46d2-9baf-e4bb45f01d3b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "editBorrow - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"book_id\": \"5bc6ef78-8fcd-4e00-b37d-e9d807904ba5\", //optional\r\n    \"user_id\": \"161f5d1d-7ca4-4d8d-a67e-28f1f7a77b78\", //optional\r\n    \"borrow_date\": \"2024-08-23T09:30:59.525Z\", // optional\r\n    \"due_date\": \"2024-08-23T09:59:59.525Z\", //optional\r\n    \"return_date\": \"2024-08-23T09:36:59.525Z\" //optional\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/edit/818e6d96-5838-46d2-9baf-e4bb45f01d3b",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										"edit",
+										"818e6d96-5838-46d2-9baf-e4bb45f01d3b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-bEkb5GabGjv1SgKZdbs+WP+p04M\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 02:49:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"update borrow successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteBorrow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/circulation/7b37dcda-b7c3-469e-a599-38e464799459",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"circulation",
+								"7b37dcda-b7c3-469e-a599-38e464799459"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteBorrow - success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/circulation/7b37dcda-b7c3-469e-a599-38e464799459",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"circulation",
+										"7b37dcda-b7c3-469e-a599-38e464799459"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-CFaj5eNv6Jmm8Zg5bwpOpsDi7Eo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Aug 2024 03:54:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"delete borrow successfully\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDc3ZDA5OGMtYjkyYi00N2Y1LWJlOGYtZDIzNTdkN2NlZGRjIiwidXNlcm5hbWUiOiJub250YXBoYXQiLCJyb2xlIjoidXNlciIsInRva2VuX2lkIjoiNWI1MmE2OTEtZTgyYy00MDcwLTkxMDAtM2NmNDE3OTYzYTllIiwiaWF0IjoxNzI0Mzg0NzE0LCJleHAiOjE3MjQ5ODk1MTR9.9y_OcD5aR3AQNycfJupUqkxBENEOxvZu96nhdnXb5g0",
+			"type": "string"
+		},
+		{
+			"key": "admin",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2MxMzhjMGQtNTc1OS00YTczLWE5YzUtMDQ1Nzc0NzVlYjU3IiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX2lkIjoiMDFkYjM0YWMtODc5Yy00NWU0LTg2MzgtOThhZmQ4NWMzMzMzIiwiaWF0IjoxNzI0Mzg0NzQ1LCJleHAiOjE3MjQ5ODk1NDV9.vJ0r0XiS26uU_wdJPE9Rvi5gdwYQFqyH2WABaJtVuj4",
+			"type": "string"
+		}
+	]
+}

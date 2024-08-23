@@ -12,3 +12,9 @@ export interface BookModel {
 }
 
 export type BookListModel = BookModel[];
+
+export interface searchBookModel {
+  title?: string;
+  author?: string;
+  category_ids?: string[];
+}

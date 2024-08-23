@@ -5,13 +5,13 @@ import * as bookValidator from "../validator/bookValidator";
 
 const router = express.Router();
 
-router.get("/", bookController.getBookList);
-
 router.get(
-  "/(:book_id)",
+  "/view/(:book_id)",
   bookValidator.viewBookByIdValidation,
   bookController.viewBook
 );
+
+router.get("/", bookValidator.searchBookValidation, bookController.searchBook);
 
 router.post(
   "/",
@@ -27,6 +27,14 @@ router.put(
   tools.authorize(["admin"]),
   bookValidator.updateBookValidation,
   bookController.updateBook
+);
+
+router.delete(
+  "/(:book_id)",
+  tools.authenticate,
+  tools.authorize(["admin"]),
+  bookValidator.deleteBookValidation,
+  bookController.deleteBook
 );
 
 export = router;
